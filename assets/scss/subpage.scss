@@ -74,15 +74,41 @@ body.subpage {
       }
     }
   }
-  //product wrap
+  //services wrap
   .content {
     .category {
+      .sub-title {
+        margin-bottom: 40px;
+      }
       // margin: 50px;
       .wrap {
         .ser-items {
+          padding-bottom:30px;
+          margin-top: 30px;
           width: calc(33%);
-          // position: relative;
+          position: relative;
           float: left;
+          .subtitle {
+            // font-size: 16px;
+            font-weight: 700;
+            color: #494949;
+            // max-width: 240px;
+            margin-bottom: 15px;
+          }
+          p { font-size: 14px;
+            color: #999;
+
+          }
+        }
+        .ser-text {
+          padding: 0px 0 0 90px;
+          line-height: 15px;
+        }
+        img {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          vertical-align:middle;
         }
       }
     }

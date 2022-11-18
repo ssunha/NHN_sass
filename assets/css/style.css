@@ -532,9 +532,39 @@ body.subpage main .container .inner .box {
   flex-wrap: wrap;
 }
 
+.content .category .sub-title {
+  margin-bottom: 40px;
+}
+
 .content .category .wrap .ser-items {
+  padding-bottom: 30px;
+  margin-top: 30px;
   width: calc(33%);
+  position: relative;
   float: left;
+}
+
+.content .category .wrap .ser-items .subtitle {
+  font-weight: 700;
+  color: #494949;
+  margin-bottom: 15px;
+}
+
+.content .category .wrap .ser-items p {
+  font-size: 14px;
+  color: #999;
+}
+
+.content .category .wrap .ser-text {
+  padding: 0px 0 0 90px;
+  line-height: 15px;
+}
+
+.content .category .wrap img {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  vertical-align: middle;
 }
 
 .content.gallery .inner #gallery-box-wrap {
