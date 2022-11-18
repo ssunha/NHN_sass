@@ -1,0 +1,50 @@
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      /* left: -380px; */
+      top: -100px;
+      /* text-align: center; */
+      font-size: 18px;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      /* justify-content: center; */
+      /* -webkit-box-align: center; */
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+/* 슬라이더 1.정직한가격~ 이부분 사진 색깔 바꾸기 */
+.swiper-button-next, .swiper-button-prev {
+  color: #fff;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+  bottom: 90px;
+}
+
+/* 슬라이더 1.정직한가격~ 1장일때는 왼쪽버튼이 안보임. 3장일때는 오른쪽 버튼이 안보임. */
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+  opacity: 0;
+}

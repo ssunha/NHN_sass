@@ -1,0 +1,31 @@
+#mainbanner {
+  height: 700px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+#mainbanner .maintext {
+  position: absolute;
+  top: 45%;
+  left: 290px;
+  color: #fff;
+}
+
+#mainbanner .maintext .maintitle {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#mainbanner .maintext .subtitle {
+  font-size: 22px;
+  color: #fff;
+}
+
+.inner:nth-child(1) {
+  margin-top: 50px;
+}
+
+.inner .box.items-2 p + a {
+  margin-top: 30px;
+}

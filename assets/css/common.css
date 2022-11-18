@@ -1,0 +1,18 @@
+.gbtn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  height: 50px;
+  line-height: 15px;
+  vertical-align: middle;
+  color: #666;
+}
+
+.gbtn.right {
+  float: right;
+}
+
+.gbtn:hover {
+  border-bottom: 3px solid #fa2828;
+  background: white;
+}

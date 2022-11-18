@@ -1,0 +1,296 @@
+ActionConfig = function(){
+	this.Method = "POST";
+	this.ContainerID = "";
+	this.Url = "";
+	this.Param = "";
+	this.TimeOut = "1500";
+
+	this.setMethod = function(Method){
+		this.Method = Method;
+	}
+	this.setContainerID = function(ContainerID){
+		this.ContainerID = ContainerID;
+	}
+	this.setUrl = function(Url){
+		this.Url = Url;
+	}
+	this.setParam = function(Param){
+		this.Param = Param;
+	}
+	this.setTimeOut = function(TimeOut){
+		this.TimeOut = TimeOut;
+	}
+
+	this.getTimeOut = function(){
+		return this.TimeOut;
+	}
+
+	this.getMethod = function(){
+		return this.Method;
+	}
+	this.getContainerID = function(){
+		return this.ContainerID;
+	}
+	this.getUrl = function(){
+		return this.Url;
+	}
+	this.getParam = function(){
+		return this.Param;
+	}
+}
+
+var _Config = new ActionConfig();
+
+_Load_ = function(config){
+	var containerID = config.getContainerID();
+	var url = config.getUrl();
+	var method = config.getMethod();
+	var param = config.getParam();
+	var timeout = config.getTimeOut();
+
+	$.ajax({
+		type : method,
+		url  : url ,
+		data : param ,
+		timeout : timeout,
+		success: function(resultset){
+			document.getElementById(containerID).innerHTML = resultset;
+			fnShowElement(containerID);
+		},
+		error : function(msg){
+		}
+
+	});
+}
+
+/**
+ * 해당 영역 보이기
+ */
+fnShowElement = function(elementID) {
+	if ($("#"+elementID)) {
+		$("#"+elementID).show();
+	}
+}
+/**
+ * 해당 영역 감추기
+ */
+fnHideElement = function(elementID) {
+	if ($("#"+elementID)) {
+		$("#"+elementID).hide();
+	}
+}
+
+/**
+ * popupWindow(url, winname, width, height, options, position)
+ * 팝업창
+ */
+function popupWindow(url, winname, width, height, options, position) {
+	var posX = 0;
+	var posY = 0;
+	switch(position.toUpperCase()) {
+	case "CENTER":
+	    posX = Math.ceil((window.screen.width - width) / 2);
+	    posY = Math.ceil((window.screen.height - height) / 2);
+	    break;
+	case "LEFTTOP":
+	    posX = 0;
+	    posY = 0;
+	    break;
+	case "LEFTMIDDLE":
+	    posX = 0;
+	    posY = Math.ceil((window.screen.height - height) / 2);
+	    break;
+	case "LEFTBOTTOM":
+	    posX = 0;
+	    posY = Math.ceil(window.screen.height - height);
+	    break;
+	case "RIGHTTOP":
+	    posX = Math.ceil(window.screen.width - width);
+	    posY = 0;
+	    break;
+	case "RIGHTMIDDLE":
+	    posX = Math.ceil(window.screen.width - width);
+	    posY = Math.ceil((window.screen.height - height) / 2);
+	    break;
+	case "RIGHTBOTTOM":
+	    posX = Math.ceil(window.screen.width - width);
+	    posY = Math.ceil(window.screen.height - height);
+	    break;
+	default:
+	    posX = Math.ceil((window.screen.width - width) / 2);
+	    posY = Math.ceil((window.screen.height - height) / 2);
+	    break;
+	}
+	var popupWin=window.open(url, winname,'left='+ posX + ',top=' + posY + ',width=' + width +',height=' + height + ',' + options);
+	popupWin.focus();
+	return popupWin;
+}
+
+/**
+ * 2개씩 롤링 되는 배너에서 사용
+ *
+ *  leftBannerID : 왼쪽 배너 ID
+ *  rightBannerID : 오른쪽 배너 ID
+ *  left  : 왼쪽에 출력할 엘리먼트 번호
+ *  right : 오른쪽에 출력할 엘리먼트 번호
+ *  total : 총 데이터 수
+ *  elmentPatten : 데이터를 가지고 있는 엘리먼트 패턴
+ */
+var global_left = 0;
+var global_right = 0;
+var global_Interval;
+function fnTwoBannerRolling(leftBannerID, rightBannerID, left, right, total, elmentPatten){
+
+	global_left = left;
+	global_right = right;
+
+	$('#' +leftBannerID).html($('#'+elmentPatten +''+left).html());
+	$('#' +rightBannerID).html($('#'+elmentPatten +''+right).html());
+
+	if(left < total && right != total  && right < total) {
+		left = left+1;
+		right = right+1;
+	} else if(left == total && right == 1) {
+		left = right;
+		right = left+1;
+	} else if(left < total && right == total) {
+		left = right;
+		right = 1;
+	}
+
+	global_Interval = setTimeout(function(){
+									fnTwoBannerRolling(leftBannerID, rightBannerID, left, right, total, elmentPatten);
+									}
+									,3000);
+}
+
+/**
+ * SplashLog(status)
+ * 로딩 On/Off
+ * InitSplashLogo() 호출 이후 필수 테그가 Append 된 상태에서 사용.
+ *
+ */
+function SplashLogo(status){
+
+	if(status == true) {
+		global_NowLoading = true;
+
+		var popupId = "#progressBar";
+		var bgDivId = "#progressDiv";
+
+		$(bgDivId).css('height', $(document).height());
+		$(bgDivId).css('width', $('#content').width());
+
+		$(popupId).css('top',  ($('#content').scrollTop() +  ($('#content').height()-$(popupId).height())/2)+'px' );
+		$(popupId).css('left', ($('#content').scrollLeft() + (($('#content').width()-$(popupId).width())/2))+'px' );
+
+		$(bgDivId).show();
+		$(popupId).show();
+	} else {
+		var popupId = "#progressBar";
+		var bgDivId = "#progressDiv";
+
+		$(bgDivId).hide();
+		$(popupId).hide();
+
+		global_NowLoading = false;
+	}
+}
+
+var global_NowLoading = false;
+function InitSplashLogo(){
+	var content = $('#content');
+	var htmlTag = '<div id="progressDiv" style="width:100%;height:100%;z-index:100;display:none;position:absolute;top:0;left:0;background: #ffffff;filter:alpha(opacity=50);opacity:0.5; -moz-opacity: 0.5; -khtml-opacity: 0.5;"></div>'+
+	  '<div id="progressBar" style="position:absolute;z-index:150;display:none;width:300px;height:300px;">'+
+	  	'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="300" height="300" id="load_next" align="middle">'+
+	  		'<param name="allowScriptAccess" value="sameDomain" />'+
+	  		'<param name="movie" value="../img/load_next.swf" />'+
+	  		'<param name="quality" value="high" />'+
+	  		'<param name="wmode" value="transparent">'+
+	  		'<param name="bgcolor" value="#ffffff" />'+
+	  		'<embed src="../img/load_next.swf" wmode="transparent" quality="high" bgcolor="#ffffff" width="300" height="300" name="load_next" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="www.macromedia.com/go/getflashplayer" />'+
+	    '</object>'+
+	  '</div>';
+
+	if(content != null) {
+		content.append(htmlTag);
+	}
+}
+
+function notice_getcookie( name ){
+    var nameOfcookie = name + "=";
+    var x = 0;
+    while ( x <= document.cookie.length ) {
+      var y = (x+nameOfcookie.length);
+      if ( document.cookie.substring( x, y ) == nameOfcookie ) {
+        if ( (endOfcookie=document.cookie.indexOf( ";", y )) == -1 )
+        endOfcookie = document.cookie.length;
+        return unescape( document.cookie.substring( y, endOfcookie ) );
+      }
+      x = document.cookie.indexOf( " ", x ) + 1;
+      if ( x == 0 )
+      break;
+    }
+  return "";
+}
+
+function privacyPopup(site) {
+	//기능 오류 시 기존 site 선언 부에 주석 처리 후 아래 내용 주석해제
+	//site = '/' + site + '/privacy/privacy.html';
+	//site = '/footer/privacy/privacy.nhn';
+	var popwin = window.open('/footer/privacy/privacy.nhn', 'privacy', 'width=877,height=660,scrollbars=yes');
+	popwin.focus();
+}
+
+function privacyNoticePopup(seq, winname, width, height, options, posX, posY) {
+	var popupWin = popupWindowXY('/footer/privacy/privacyNotice.nhn?privacyNotice.noticeSeq=' + seq,winname,width,height,'scrollbars=yes', posX, posY);
+	return popupWin;
+}
+
+function popupWindowXY(url, winname, width, height, options, posX, posY) {
+	var popupWin=window.open(url, winname,'left='+ posX + ',top=' + posY + ',width=' + width +',height=' + height + ',' + options);
+	if(popupWin != null) {
+		popupWin.focus();
+	}
+	return popupWin;
+}
+
+function _import_js(jsFile) {
+	document.write("<script type='text/javascript' src='" + jsFile + "' charset='utf-8'></script>");
+}
+
+
+// 컨퍼런스 콜
+function conferenceCall(site, today) {
+	
+//	var date = new Date();
+//	var year = new Date().getFullYear();
+//	var month = date.getMonth()+1;
+//	if (month < 10) {
+//		month = "0" + month;
+//	}
+//	var day = date.getDate();
+//	if (day < 10) {
+//		day = "0" + day;
+//	}
+//	var hour = date.getHours();
+//	if (hour < 10) {
+//		hour = "0" + hour;
+//	}
+//	var start = "2013.11.04:11";
+//	var end = "2014.02.07:00";
+//	
+
+	if ( "201405081205" <= today && today < "201409010000") {
+		if ( (navigator.userAgent.match(/iPhone/i)) ||
+			 (navigator.userAgent.match(/iPod/i)) || 
+			 (navigator.userAgent.match(/android/i)) || 
+			 (navigator.userAgent.match(/Android/i))) {
+				
+		} else {
+			site = '/' + site + '/conferenceCall.nhn';
+			popupWindow(site, 'conferenceCall', '625', '450', 'scrollbars=no', 'CENTER');
+		}
+	}
+	
+}

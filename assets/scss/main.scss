@@ -1,0 +1,41 @@
+//메인 페이지
+#mainbanner {
+  height: 700px;
+  // background: url('../img/mainbanner.jpg') no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  .maintext {
+    position: absolute;
+    top: 45%;
+    left: 290px;
+    color: #fff;
+    .maintitle {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      }
+      .subtitle {
+        font-size: 22px;
+        color: #fff;
+    }
+  }
+}
+
+// .container {
+//   width: 1320px;
+//   margin: 0 auto;
+// }
+
+.inner {
+  // min-width: 1200px;
+  &:nth-child(1) {
+    margin-top: 50px;
+  }
+  .box {
+    &.items-2 {
+      p + a {
+        margin-top: 30px;
+      }
+    }
+  }
+}
