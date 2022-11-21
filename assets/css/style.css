@@ -314,6 +314,10 @@ table.common-table tr:not(:first-child):hover {
   font-size: 18px;
 }
 
+.items.map {
+  margin: 20px;
+}
+
 .items.map p {
   margin: 10px;
 }
@@ -569,7 +573,7 @@ body.subpage main .container .sub-title span {
 body.subpage main .container .sub-title span:after {
   content: '';
   position: absolute;
-  height: 3px;
+  height: 2px;
   background: #999;
   bottom: 0;
   left: 0;
