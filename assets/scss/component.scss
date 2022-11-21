@@ -64,15 +64,15 @@
 #gallery-box-wrap {
   #gallery-box {
     position: relative;
-    width: 600px;
+    width: 800px;
     margin: 20px auto;
     #navi {
       position: relative;
-      width: 600px;
+      width: 800px;
       overflow: hidden;
       ul{
         li {
-         width: 120px;
+         width: 160px;
          float: left;
          img {
            width: 100%;
@@ -81,7 +81,7 @@
        }
       }
       .page-wrap {
-         width: 1800px;
+         width: 1600px;
          .page {
            float: left;
            overflow: hidden;
@@ -97,16 +97,16 @@
         cursor: pointer;
         &.next {
           right: 0;
-          transform: translate( 100%, -50% );
+          transform: translate( 100%, 60% );
         }
         &.prev {
           left: 0;
-          transform: translate( -100%, -50% );
+          transform: translate( -100%, 60% );
         }
       }
     }
     #main {
-      width: 600px;
+      width: 800px;
       height: 450px;
       float: right;
       img {
@@ -118,30 +118,77 @@
 }
 
 //accordian
+.content.faq {
+  .bestfaq {
+    padding-left: 18px;
+    font-size: 17px;
+    height: 45px;
+    color: #444;
+    line-height: 50px;
+    margin-top: 60px;
+    border-top: 2px solid #000;
+    strong {
+      color: #BD0000;
+    }
+  }
+  .btn {
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+    background: #f3f3f3;
+    padding: 0 25px;
+    margin-top: 10px;
+    line-height: 30px;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    color: #444;
+    font-weight: bold;
+  }
+}
 .accordian {
   dl {
     // width: 800px;
-    margin: 60px auto;
+    margin: 10px auto;
     dt {
       /* html에있는 16px 기준으로 ?  */
       text-indent: 1em;
-      // font-size: 18px;
-      color: white;
-      line-height: 35px;
-      height: 35px;
-      background: $tableBg;
+      font-size: 17px;
+      color: #000;
+      line-height: 50px;
+      height: 50px;
+      border-bottom: 1px solid #ddd;
+      // background: $tableBg;
+      &:first-child {
+        border-top: 2px solid black;
+      }
+      img {
+        width: 26px;
+        transform: translateY(20%);
+        padding-right: 5px;
+      }
     }
     dd {
       font-size: 15px;
       margin: 0;
       height: 300px;
       line-height: 27px;
-      // background: $tableCellBg;
-      border: 1px solid #e6e3e4;
-      // background: #fff;
+      background: $tableCellBg;
+      // border: 1px solid #e6e3e4;
+      // background: #fff;}
       p {
         margin: 0;
-        padding: 20px;
+        padding: 35px;
+        &:before {
+          display: block;
+          // position: absolute;
+          content: "A";
+          color: #BD0000;
+          font-weight: 600;
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+          // top: -0.5rem;
+          // left: 0;
+        }
       }
     }
   }
@@ -213,9 +260,16 @@ table {
 
 // kakao map
 #map {
-  margin-top: 50px;
+  margin-top: 70px;
   .marker-title {
     font-weight: 700;
     font-size: $fontSizeMid;
   }
+}
+
+.items.map {
+  p {
+    margin: 10px;
+  }
+
 }

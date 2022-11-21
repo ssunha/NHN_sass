@@ -1,10 +1,15 @@
 // general ui
 .gbtn {
-  display: inline-block;
+  // display: inline-block;
+  width: 130px;
+  height: 30px;
   box-sizing: border-box;
-  padding: 0 20px;
-  height: 50px;
-  line-height: 15px;
+  // justify-content: center;
+  text-align: center;
+  padding: 7px 20px;
+  border-bottom: 1px solid #999;
+  border-radius: 2%;
+  line-height: 20px;
   vertical-align: middle;
   // background: $gbtnColor;
   color: #666;
@@ -13,9 +18,9 @@
     float: right;
   }
   &:hover {
-    border-bottom: 3px solid #fa2828;
-    // color: $gbtnColor;
-    background: white;
+    // border-bottom: 3px solid #fa2828;
+    color: $gbtnColor;
+    // background: white;
     // font-weight: bold;
   }
 }

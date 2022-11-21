@@ -27,11 +27,14 @@ a:hover {
 }
 
 .gbtn {
-  display: inline-block;
+  width: 130px;
+  height: 30px;
   box-sizing: border-box;
-  padding: 0 20px;
-  height: 50px;
-  line-height: 15px;
+  text-align: center;
+  padding: 7px 20px;
+  border-bottom: 1px solid #999;
+  border-radius: 2%;
+  line-height: 20px;
   vertical-align: middle;
   color: #666;
 }
@@ -41,8 +44,7 @@ a:hover {
 }
 
 .gbtn:hover {
-  border-bottom: 3px solid #fa2828;
-  background: white;
+  color: #999999;
 }
 
 .inner h2 {
@@ -110,18 +112,18 @@ a:hover {
 
 #gallery-box-wrap #gallery-box {
   position: relative;
-  width: 600px;
+  width: 800px;
   margin: 20px auto;
 }
 
 #gallery-box-wrap #gallery-box #navi {
   position: relative;
-  width: 600px;
+  width: 800px;
   overflow: hidden;
 }
 
 #gallery-box-wrap #gallery-box #navi ul li {
-  width: 120px;
+  width: 160px;
   float: left;
 }
 
@@ -131,7 +133,7 @@ a:hover {
 }
 
 #gallery-box-wrap #gallery-box #navi .page-wrap {
-  width: 1800px;
+  width: 1600px;
 }
 
 #gallery-box-wrap #gallery-box #navi .page-wrap .page {
@@ -152,16 +154,16 @@ a:hover {
 
 #gallery-box-wrap #gallery-box .navi-wrap > img.next {
   right: 0;
-  transform: translate(100%, -50%);
+  transform: translate(100%, 60%);
 }
 
 #gallery-box-wrap #gallery-box .navi-wrap > img.prev {
   left: 0;
-  transform: translate(-100%, -50%);
+  transform: translate(-100%, 60%);
 }
 
 #gallery-box-wrap #gallery-box #main {
-  width: 600px;
+  width: 800px;
   height: 450px;
   float: right;
 }
@@ -171,17 +173,56 @@ a:hover {
   width: 100%;
 }
 
+.content.faq .bestfaq {
+  padding-left: 18px;
+  font-size: 17px;
+  height: 45px;
+  color: #444;
+  line-height: 50px;
+  margin-top: 60px;
+  border-top: 2px solid #000;
+}
+
+.content.faq .bestfaq strong {
+  color: #BD0000;
+}
+
+.content.faq .btn {
+  font-size: 14px;
+  display: inline-block;
+  float: right;
+  background: #f3f3f3;
+  padding: 0 25px;
+  margin-top: 10px;
+  line-height: 30px;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+  color: #444;
+  font-weight: bold;
+}
+
 .accordian dl {
-  margin: 60px auto;
+  margin: 10px auto;
 }
 
 .accordian dl dt {
   /* html에있는 16px 기준으로 ?  */
   text-indent: 1em;
-  color: white;
-  line-height: 35px;
-  height: 35px;
-  background: #443e41;
+  font-size: 17px;
+  color: #000;
+  line-height: 50px;
+  height: 50px;
+  border-bottom: 1px solid #ddd;
+}
+
+.accordian dl dt:first-child {
+  border-top: 2px solid black;
+}
+
+.accordian dl dt img {
+  width: 26px;
+  transform: translateY(20%);
+  padding-right: 5px;
 }
 
 .accordian dl dd {
@@ -189,12 +230,21 @@ a:hover {
   margin: 0;
   height: 300px;
   line-height: 27px;
-  border: 1px solid #e6e3e4;
+  background: #f4f4f2;
 }
 
 .accordian dl dd p {
   margin: 0;
-  padding: 20px;
+  padding: 35px;
+}
+
+.accordian dl dd p:before {
+  display: block;
+  content: "A";
+  color: #BD0000;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
 }
 
 table + .gbtn {
@@ -252,16 +302,20 @@ table.common-table td .btn:hover {
 }
 
 table.common-table tr:not(:first-child):hover {
-  background: #e6e3e4;
+  background: #f4f4f2;
 }
 
 #map {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 #map .marker-title {
   font-weight: 700;
   font-size: 18px;
+}
+
+.items.map p {
+  margin: 10px;
 }
 
 #wrap {
@@ -328,7 +382,7 @@ table.common-table tr:not(:first-child):hover {
 #wrap #header #top-nav ul li .sub-menu {
   position: absolute;
   top: 100%;
-  border: 1px solid #bd0000;
+  border: 1px solid #999;
   opacity: 0;
   transition: .5s;
 }
@@ -415,16 +469,16 @@ table.common-table tr:not(:first-child):hover {
 
 #wrap #footer .container .row .column h4:before {
   right: 0;
-  background: #d60000;
+  background: #888;
 }
 
 #wrap #footer .container .row .column h4:after {
   width: 60px;
-  background: #bd0000;
+  background: #999;
 }
 
 #wrap #footer .container .row .column ul li {
-  border-bottom: 1px solid #bd0000;
+  border-bottom: 1px solid #999;
   padding: 10px 0;
 }
 
@@ -516,7 +570,7 @@ body.subpage main .container .sub-title span:after {
   content: '';
   position: absolute;
   height: 3px;
-  background: #bd0000;
+  background: #999;
   bottom: 0;
   left: 0;
   right: 0;
@@ -525,11 +579,20 @@ body.subpage main .container .sub-title span:after {
 body.subpage main .container .inner + .inner {
   margin-top: 50px;
   padding-top: 50px;
-  border-top: 1px solid #bd0000;
+  border-top: 1px solid #999;
 }
 
 body.subpage main .container .inner .box {
   flex-wrap: wrap;
+}
+
+.content {
+  min-height: 900px;
+}
+
+.content .category .category-title {
+  margin-top: 60px;
+  font-size: 21px;
 }
 
 .content .category .sub-title {
